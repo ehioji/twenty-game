@@ -9,6 +9,11 @@ function askName () {
         } while (userName === "");
     };
     return userName;
-}
+};
 
-askName();
+function randomNumb () {
+    let range = Number(prompt(`Thanks ${userName}. Now, we need to make a range to guess from. Please enter a upper limit to the range of numbers (integers) that the computer can guess (the range starts from 1).`));
+    let number = Math.floor(Math.random() * range) + 1;
+
+    return number;
+};
