@@ -1,5 +1,6 @@
+let userName;
 function askName () {
-    let userName = prompt("Howdy, and welcome to Twenty! It's blackjack, but to twenty instead of twenty-one! Exciting right!? Now before we begin, I gotta know your name. Enter it below.")
+    userName = prompt("Howdy, and welcome to Twenty! It's blackjack, but to twenty instead of twenty-one! Exciting right!? Now before we begin, I gotta know your name. Enter it below.")
     
     if (userName === "") {
         do {
@@ -10,8 +11,15 @@ function askName () {
 };
 
 function randomNumb () {
-    let range = Number(prompt(`Thanks ${userName}. Now, we need to make a range to guess from. Please enter a upper limit to the range of numbers (integers) that the computer can guess (the range starts from 1).`));
-    let number = Math.floor(Math.random() * range) + 1;
-
+    let number = Math.floor(Math.random()) + 1;
+    
     return number;
 };
+
+
+function userGuess (randomNumber) {
+    let confirmation = 'y'; 
+    do {
+        alert(`Alright ${userName}, let's get started. I'm going to generate a random number between`);
+    } while (confirmation == 'y');
+}
