@@ -10,16 +10,35 @@ function askName () {
     return userName;
 };
 
-function randomNumb () {
-    let number = Math.floor(Math.random()) + 1;
-    
-    return number;
-};
 
+function userDraw () {
+ 
+    let userTotal =  0;
+    let roundNumb = 0;
+    let roundLoss = false;
 
-function userGuess (randomNumber) {
-    let confirmation = 'y'; 
+    alert(`Alright ${userName}, let's get started. You are going to 'draw' a number between one and ten, and you will have to decide whether or not you want to continue drawing numbers. Your total must not exceed 16, or you lose automatically.`);
+
+    let dontstop;
     do {
-        alert(`Alright ${userName}, let's get started. I'm going to generate a random number between`);
-    } while (confirmation == 'y');
-}
+        roundNumb++
+        let randomNumber = Math.floor(Math.random() * 10) + 1
+        userTotal += randomNumber;
+
+        if (userTotal > 16) {
+            alert("Oops! That's over 16! You lose!");
+            roundLoss = true;
+            break;
+        } else {
+            dontstop = prompt(`Round ${roundNumb}\nYou drew ${randomNumber}. You're total is now (${userTotal}). Would you like to continue drawing? (Enter 'n' to stop, anything else to continue.)`);
+        }
+
+    } while (dontstop != 'n');
+
+    if (roundLoss != true) {
+        alert(`Your total was ${userTotal}.`)
+        return userTotal;
+    } else {
+        return undefined
+    }
+};
