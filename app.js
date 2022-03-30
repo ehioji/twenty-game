@@ -1,26 +1,25 @@
-let userName;
 let PlayerLoss = false;
 let ComputerLoss = false;
 
 function askName () {
-    userName = prompt("Howdy, and welcome to Twenty! It's blackjack, but to twenty instead of twenty-one! Exciting right!? Now before we begin, I gotta know your name. Enter it below.")
+    let username = prompt("Howdy, and welcome to Twenty! It's blackjack, but to twenty instead of twenty-one! Exciting right!? Now before we begin, I gotta know your name. Enter it below.")
     
-    if (userName === "") {
+    if (username === "") {
         do {
-            userName = prompt("You gotta enter something dude/dudette.");
-        } while (userName === "");
+            username = prompt("You gotta enter something dude/dudette.");
+        } while (username === "");
     };
-    return userName;
+    return username;
 
 };
 
 
-function userDraw () {
+function userDraw (username) {
  
     let userTotal = 0;
     let roundNumb = 0;
 
-    alert(`Alright ${userName}, let's get started. You are going to 'draw' a number between one and ten, and you will have to decide whether or not you want to continue drawing numbers. Your total must not exceed 16, or you lose automatically.`);
+    alert(`Alright ${username}, let's get started. You are going to 'draw' a number between one and ten, and you will have to decide whether or not you want to continue drawing numbers. Your total must not exceed 16, or you lose automatically.`);
 
     let dontstop;
     do {
@@ -75,9 +74,9 @@ function compDraw () {
 
 }
 
-function compareScores (playerScore, computerScore) {
+function compareScores (username, playerScore, computerScore) {
 
-    alert(`Our contestants, ${userName} and computer, have battled valiently these last few rounds...`);
+    alert(`Our contestants, ${username} and computer, have battled valiently these last few rounds...`);
     alert(`Sadly, all good things must come to an end and this competition is no exception...`);
     alert(`This is the end of the line...`);
     alert("Drumroll please...");
@@ -85,12 +84,12 @@ function compareScores (playerScore, computerScore) {
     if (PlayerLoss == true && ComputerLoss == true) {
         alert("Unfortunately, both the player and the computer were eliminated as a result of over-guessing, making this competition a NO CONTEST!");
     } else if (PlayerLoss == true && ComputerLoss == false) {
-        alert(`The computer was eliminated as a result of over-guessing, making the winner of this contest, with a score of ${playerScore}, ${userName}!!!`)
+        alert(`The computer was eliminated as a result of over-guessing, making the winner of this contest, with a score of ${playerScore}, ${username}!!!`)
     } else if (PlayerLoss == false && ComputerLoss == true) {
-        alert(`${userName} was eliminated as a result of over-guessing, making the winner of this contest, with a score ${computerScore}, the computer!`)
+        alert(`${username} was eliminated as a result of over-guessing, making the winner of this contest, with a score ${computerScore}, the computer!`)
         alert("Robo translation: BEEEP BOOOP BEEEP BEEEP BOOOP BOOOP. 01100010 01110010 01110101 01101000 .")
     } else if (playerScore > computerScore) {
-        alert(`With a score of ${playerScore}, our winner is ${userName}!!!`)
+        alert(`With a score of ${playerScore}, our winner is ${username}!!!`)
     } else if (playerScore < computerScore) {
         alert(`With a score of ${computerScore}, our winner is the computer! `)
         alert("Robo translation: BOP BEEP BOP BEEEP BOOOP BOOOP BOP BEEP. 01010100 01101000 01100101 00100000 01110010 01100101 01110110 01101111 01101100 01110101 01110100 01101001 01101111 01101110 00100000 01101001 01110011 00100000 01100101 01101101 01101001 01101110 01100101 01101110 01110100 00101110.")
@@ -101,10 +100,10 @@ function compareScores (playerScore, computerScore) {
     return 'deez';
 }
 
-askName();
+playerName = askName();
 
-playerAttempt = userDraw();
+playerAttempt = userDraw(playerName);
 
 computerAttempt = compDraw();
 
-compareScores(playerAttempt, computerAttempt);
+compareScores(playerName, playerAttempt, computerAttempt);
